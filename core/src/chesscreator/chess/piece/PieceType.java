@@ -1,19 +1,26 @@
 package chesscreator.chess.piece;
 
 
+import chesscreator.chess.piece.movement.PieceMovement;
 
 public enum PieceType {
-    PAWN('p'),
-    KNIGHT('n'),
-    BISHOP('b'),
-    ROOK('r'),
-    QUEEN('q'),
-    KING('k');
+    NONE('\0', null),
+    PAWN('p', PieceMovement.PAWN),
+    KNIGHT('n', PieceMovement.KNIGHT),
+    BISHOP('b', PieceMovement.BISHOP),
+    ROOK('r', PieceMovement.ROOK),
+    QUEEN('q', PieceMovement.QUEEN),
+    KING('k', PieceMovement.KING);
 
+    public final PieceMovement pieceMovement;
     public final char pieceLetter;
-    PieceType(char pieceLetter) {
+
+    PieceType(char pieceLetter, PieceMovement pieceMovement) {
         this.pieceLetter = pieceLetter;
+        this.pieceMovement = pieceMovement;
     }
+
+
 
     public static PieceType getPieceTypeByLetter(char letter){
         for(PieceType pieceType : PieceType.values()){
@@ -23,4 +30,6 @@ public enum PieceType {
         }
         throw new IllegalArgumentException("Letter '"+letter+"' does not correspond to any chess piece type.");
     }
+
+
 }

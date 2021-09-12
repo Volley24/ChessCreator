@@ -9,10 +9,11 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		Game game = new Game();
 
-		config.title = "Chess Creator - v.0.0-alpha";
+		config.title = game.getWindowTitle();
 		config.width = 1080;
 		config.height = 1080 / 16 * 9;
 		config.resizable = false;
+		config.samples = 3;
 
 		new LwjglApplication(game, config);
 	}

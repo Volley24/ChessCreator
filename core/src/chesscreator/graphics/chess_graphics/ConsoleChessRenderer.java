@@ -1,7 +1,6 @@
 package chesscreator.graphics.chess_graphics;
 
 import chesscreator.chess.ChessBoard;
-import chesscreator.chess.coordinates.Coordinate;
 import chesscreator.chess.piece.*;
 
 public class ConsoleChessRenderer extends ChessRenderer{
@@ -16,10 +15,10 @@ public class ConsoleChessRenderer extends ChessRenderer{
             stringBuilder.append(getNumberString(y, whitePerspective)).append(" |");
 
             for(int x = 0; x < chessBoard.getBoardSize(); x++){
-                int realX = whitePerspective ? x : Coordinate.flipRawCoordinate(x);
-                int realY = whitePerspective ? y : Coordinate.flipRawCoordinate(y);
+                int realX = whitePerspective ? x : chessBoard.flipCoordinate(x);
+                int realY = whitePerspective ? y : chessBoard.flipCoordinate(y);
 
-                ChessPiece chessPiece = chessBoard.getPieceByRawLocation(realX, realY);
+                ChessPiece chessPiece = chessBoard.getPiece(realX, realY);
 
                 stringBuilder.append(ChessPiece.asLetter(chessPiece)).append("|");
             }
@@ -27,11 +26,11 @@ public class ConsoleChessRenderer extends ChessRenderer{
         }
         stringBuilder.append(getLetterString(whitePerspective));
 
-        System.out.println(stringBuilder.toString());
+        System.out.println(stringBuilder);
     }
 
     private String getNumberString(int y, boolean whitePerspective){
-        return ""+(whitePerspective ? Coordinate.flipRawCoordinate(y-1) : y + 1);
+        return ""+(whitePerspective ? chessBoard.flipCoordinate(y) + 1 : y + 1);
     }
 
     private String getLetterString(boolean whitePerspective){

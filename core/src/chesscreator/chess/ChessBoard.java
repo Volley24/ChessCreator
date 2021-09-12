@@ -1,58 +1,42 @@
 package chesscreator.chess;
 
-import chesscreator.chess.coordinates.Coordinates;
+import chesscreator.chess.coordinates.Position;
 import chesscreator.chess.piece.*;
 
 public class ChessBoard {
-    public static String STARTING_POSITION_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR";
-    private static final PieceType[] PIECE_ORDER_BLACK =
-            {PieceType.ROOK,
-            PieceType.BISHOP,
-            PieceType.BISHOP,
-            PieceType.KING,
-            PieceType.QUEEN,
-            PieceType.BISHOP,
-            PieceType.KNIGHT,
-            PieceType.PAWN};
+    public final static String STARTING_POSITION_FEN =
+            "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
-    private final ChessPiece[] tiles;
+
+    private ChessPiece[] tiles;
     private final int boardSize;
 
     public ChessBoard(){
         this.boardSize = 8;
-        this.tiles = new ChessPiece[boardSize * boardSize];
 
-        initPieces();
+        setupBoard(STARTING_POSITION_FEN);
     }
 
-    public ChessBoard(int boardSize){
-        this.tiles = new ChessPiece[boardSize * boardSize];
-        this.boardSize = boardSize;
+    public ChessBoard(String pieceLocationField){
+        this.boardSize = 8;
 
-        initPieces();
+        setupBoard(pieceLocationField);
     }
 
-    public void initPieces(){
-        initPieces(STARTING_POSITION_FEN);
-//        for(int x = 0; x < boardSize; x++){
-//            setTile(new ChessPiece(PieceColor.BLACK, PIECE_ORDER_BLACK[x]), x, 0);
-//            setTile(new ChessPiece(PieceColor.BLACK, PieceType.PAWN), x, 1);
-//
-//            setTile(new ChessPiece(PieceColor.WHITE, PieceType.PAWN), x, 6);
-//            setTile(new ChessPiece(PieceColor.WHITE, PIECE_ORDER_BLACK[x]), x, 7);
-//        }
-    }
 
-    public void initPieces(String fenString){
-        String piecesLocation = fenString.split(" ")[0];
 
+    public void setupBoard(String fenString){
+        String piecesFenField = fenString.split(" ")[0];
+
+        tiles = new ChessPiece[boardSize * boardSize];
         int x = 0, y = 0;
-        for(char fenChar : piecesLocation.toCharArray()){
-            if (Character.isLetter(fenChar)){
-                PieceColor color = Character.isUpperCase(fenChar) ? PieceColor.WHITE : PieceColor.BLACK;
-                PieceType type = PieceType.getPieceTypeByLetter(fenChar);
+        for(char fenChar : piecesFenField.toCharArray()){
 
-                setTile(new ChessPiece(color, type), x, y);
+            if (Character.isLetter(fenChar)){
+                PieceType type = PieceType.getPieceTypeByLetter(fenChar);
+                PieceColor color = Character.isUpperCase(fenChar) ? PieceColor.WHITE : PieceColor.BLACK;
+
+                setTile(x, y, new ChessPiece(type, color));
                 x++;
 
             }else if (Character.isDigit(fenChar)){
@@ -67,17 +51,32 @@ public class ChessBoard {
             }
         }
     }
+    public int flipCoordinate(int coordinate){
+        return boardSize - 1 - coordinate;
+    }
 
-    public ChessPiece getPieceByIndex(int i){
-        return this.tiles[i];
+    public boolean isTileOutOfBounds(int x, int y){
+        return x < 0 || x > (boardSize-1) || y < 0 || y > (boardSize-1);
     }
-    public ChessPiece getPieceByRawLocation(int x, int y){
-        return getPieceByIndex(x + y * boardSize);
+
+
+    public ChessPiece getPiece(int index){
+        return this.tiles[index];
     }
-    public ChessPiece getPieceByCoordinates(Coordinates coordinates){
-        return getPieceByIndex(coordinates.x.getValue() + coordinates.y.getValue() * boardSize);
+    public ChessPiece getPiece(int x, int y){
+        return getPiece(x + y * boardSize);
     }
-    public void setTile(ChessPiece chessPiece, int x, int y){
+
+    public ChessPiece getPiece(Position position){
+        return getPiece(position.x, position.y);
+    }
+
+
+    public void setTile(int x, int y, ChessPiece chessPiece){
+        if(chessPiece != null) {
+            chessPiece.setPosition(x, y);
+        }
+
         this.tiles[x + y * boardSize] = chessPiece;
     }
 
