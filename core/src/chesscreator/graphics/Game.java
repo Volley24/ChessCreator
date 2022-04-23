@@ -35,6 +35,7 @@ public class Game extends ApplicationAdapter {
 		gameCamera.zoom = 0.5f;
 
 		chessGame = new ChessGame();
+		chessGame.setupGame("8/5k2/3p4/1p1Pp2p/pP2Pp1P/P4P1K/8/8 b");
 		chessRenderer = new GraphicalChessRenderer(chessGame);
 	}
 

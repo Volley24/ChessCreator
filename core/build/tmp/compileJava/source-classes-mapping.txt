@@ -1,0 +1,61 @@
+chesscreator/chess/piece/new_piece/King.java
+ chesscreator.chess.piece.new_piece.King
+chesscreator/graphics/chess_graphics/ConsoleChessRenderer.java
+ chesscreator.graphics.chess_graphics.ConsoleChessRenderer
+chesscreator/chess/piece/new_piece/Piece.java
+ chesscreator.chess.piece.new_piece.Piece
+chesscreator/chess/piece/movement/CustomPieceMovement.java
+ chesscreator.chess.piece.movement.CustomPieceMovement
+chesscreator/chess/piece/new_piece/AxisPiece.java
+ chesscreator.chess.piece.new_piece.AxisPiece
+chesscreator/chess/coordinates/CoordinateConverter.java
+ chesscreator.chess.coordinates.CoordinateConverter
+chesscreator/chess/ChessGame.java
+ chesscreator.chess.ChessGame
+chesscreator/chess/piece/movement/PawnMovement.java
+ chesscreator.chess.piece.movement.PawnMovement
+chesscreator/chess/piece/movement/Axis.java
+ chesscreator.chess.piece.movement.Axis
+chesscreator/chess/piece/PieceType.java
+ chesscreator.chess.piece.PieceType
+chesscreator/chess/ChessBoard.java
+ chesscreator.chess.ChessBoard
+tests/ChessPieceMovementTest.java
+ tests.ChessPieceMovementTest
+chesscreator/chess/piece/new_piece/Knight.java
+ chesscreator.chess.piece.new_piece.Knight
+chesscreator/chess/piece/movement/PieceMovement.java
+ chesscreator.chess.piece.movement.PieceMovement
+chesscreator/chess/piece/new_piece/Rook.java
+ chesscreator.chess.piece.new_piece.Rook
+chesscreator/graphics/chess_graphics/GraphicalChessRenderer.java
+ chesscreator.graphics.chess_graphics.GraphicalChessRenderer
+chesscreator/graphics/Textures.java
+ chesscreator.graphics.Textures
+tests/CoordinateConverterTest.java
+ tests.CoordinateConverterTest
+chesscreator/chess/piece/new_piece/Queen.java
+ chesscreator.chess.piece.new_piece.Queen
+chesscreator/chess/coordinates/Position.java
+ chesscreator.chess.coordinates.Position
+chesscreator/graphics/chess_graphics/ChessRenderer.java
+ chesscreator.graphics.chess_graphics.ChessRenderer
+chesscreator/graphics/chess_graphics/ChessOverlay.java
+ chesscreator.graphics.chess_graphics.ChessOverlay
+ chesscreator.graphics.chess_graphics.OnSquareTargetedListener
+chesscreator/chess/piece/new_piece/Bishop.java
+ chesscreator.chess.piece.new_piece.Bishop
+chesscreator/chess/piece/PieceColor.java
+ chesscreator.chess.piece.PieceColor
+chesscreator/graphics/chess_graphics/CheckeredBoard.java
+ chesscreator.graphics.chess_graphics.CheckeredBoard
+chesscreator/version/Version.java
+ chesscreator.version.Version
+chesscreator/chess/piece/new_piece/Pawn.java
+ chesscreator.chess.piece.new_piece.Pawn
+chesscreator/chess/piece/ChessPiece.java
+ chesscreator.chess.piece.ChessPiece
+chesscreator/version/DevStage.java
+ chesscreator.version.DevStage
+chesscreator/graphics/Game.java
+ chesscreator.graphics.Game
