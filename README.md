@@ -1,5 +1,5 @@
 # ChessCreator
-A chess variant creator made with Java and libGDX.
+Chess made with Java and libGDX.
 
 This app is a WIP and currently only has basic chess rules implemented.
 
